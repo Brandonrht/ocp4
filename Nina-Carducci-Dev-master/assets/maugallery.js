@@ -205,7 +205,7 @@
           ? '<div class="mg-prev" style="cursor:pointer;position:absolute;top:50%;left:-15px;background:white;"><</div>'
           : '<span style="display:none;" />'
         }
-                            <img class="lightboxImage img-fluid" alt="Contenu de l'image affichée dans la modale au clique"/>
+                            <img class="lightboxImage img-fluid" alt="Contenu de l\'image affichée dans la modale au clique"/>
                             ${navigation
           ? '<div class="mg-next" style="cursor:pointer;position:absolute;top:50%;right:-15px;background:white;}">></div>'
           : '<span style="display:none;" />'
@@ -232,12 +232,18 @@
         console.error(`Unknown tags position: ${position}`);
       }
     },
+
+    // Modification effectuée ici pour ajouter la classe active correctement
     filterByTag() {
       if ($(this).hasClass("active-tag")) {
         return;
       }
-      $(".active-tag").removeClass("active active-tag");
-      $(this).addClass("active-tag");
+
+      // Retirer la classe active de tous les filtres
+      $(".nav-link").removeClass("active active-tag");
+
+      // Ajouter la classe active au lien cliqué
+      $(this).addClass("active active-tag");  // Correction ici pour le bouton "Tous"
 
       var tag = $(this).data("images-toggle");
 
